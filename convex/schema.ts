@@ -16,5 +16,18 @@ export default defineSchema({
     completed: v.optional(v.boolean()),
     feedback: v.optional(v.any()),
     companionData: v.optional(v.any()),
+  })     
+  DestinationLeads: defineTable({
+    destinationName: v.string(),
+    userEmail: v.string(),
+    searchCriteria: v.any(),
+    status: v.string(),
+    notified: v.boolean(),
+    retryCount: v.number(),
+    lastError: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_destination",["destinationName"])
+    .index("by_email",["userEmail"]),
   })
 });
